@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Link, Typography } from '@mui/material';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-function App() {
+function App(props) {
   const [position1Value, setPosition1Value] = useState('');
   const [position2Value, setPosition2Value] = useState('');
   const [savedData, setSavedData] = useState([]);
@@ -52,6 +53,16 @@ function App() {
         gap: '16px', // Spacing between elements
       }}
     >
+      <Map
+        google={props.google}
+        style={{ width: '80%', height: '400px' }}
+        initialCenter={{
+          lat: 37.7749,
+          lng: -122.4194
+        }}
+        zoom={20}
+      />
+
       <TextField
         id="position1"
         label="Position 1"
@@ -72,7 +83,7 @@ function App() {
 
       {/* Display saved data */}
       <Box mt={4}>
-        <h2>Saved Data:</h2>
+        <Typography variant="h6">Saved Data:</Typography>
         <ul>
           {savedData.map((data, index) => (
             <li key={index}>
@@ -82,8 +93,8 @@ function App() {
         </ul>
       </Box>
     </Box>
-    );
-  }
+  );
+}
 
   return (
     <Box
@@ -138,5 +149,7 @@ function App() {
     </Box>
   );
 }
-
-export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCFvMTJRCfYIjBsNdTASP5RdBISZdGe-yo'
+})(App);
+//export default App;
