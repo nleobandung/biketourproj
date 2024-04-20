@@ -8,7 +8,10 @@ API_KEY = "AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto"
 gmaps = googlemaps.Client(key=API_KEY)
 
 def geocode(origin, destination):
-    return
+    geocode_origin = (gmaps.geocode(origin))[0]["geometry"]["location"]
+    geocode_dest = (gmaps.geocode(destination))[0]["geometry"]["location"]
+
+    return geocode_origin["lat"], geocode_origin["lng"], geocode_dest["lat"], geocode_dest["lng"]
 
 def find_route(origin, destination):
     now = datetime.now()
