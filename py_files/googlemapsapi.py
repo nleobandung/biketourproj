@@ -1,6 +1,8 @@
 import googlemaps
 import json
 
+# documentation for googlemaps at https://github.com/googlemaps/google-maps-services-python
+
 API_KEY = "AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto"
 gmaps = googlemaps.Client(key=API_KEY)
 
