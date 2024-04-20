@@ -6,7 +6,6 @@ function App(props) {
   const [position1Value, setPosition1Value] = useState('');
   const [position2Value, setPosition2Value] = useState('');
   const [savedData, setSavedData] = useState([]);
-  const apiUrl = 'https://maps.googleapis.com/maps/api/directions/json'; // Replace with your API endpoint URL
 
   const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
