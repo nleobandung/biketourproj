@@ -5,8 +5,9 @@ function App() {
   const [position1Value, setPosition1Value] = useState('');
   const [position2Value, setPosition2Value] = useState('');
   const [savedData, setSavedData] = useState([]);
+  const apiUrl = 'https://maps.googleapis.com/maps/api/directions/json'; // Replace with your API endpoint URL
 
-  const handleSaveButtonClick = () => {
+  const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
     const newData = {
       position1: position1Value,
@@ -17,6 +18,22 @@ function App() {
     // Clear text fields after saving data
     setPosition1Value('');
     setPosition2Value('');
+
+    // Make API request with position values as parameters
+    try {
+      const response = await fetch(`${apiUrl}?origin=${position1Value}&destination=${position2Value}&mode=bicycling&key=AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log('API response:', data);
+        // Handle API response as needed
+      } else {
+        console.error('Failed to fetch data from API');
+        // Handle error if API request fails
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle any other errors
+    }
   };
 
   return (
