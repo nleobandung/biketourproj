@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Link, Typography } from '@mui/material';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
-function App() {
+function App(props) {
   const [position1Value, setPosition1Value] = useState('');
   const [position2Value, setPosition2Value] = useState('');
   const [savedData, setSavedData] = useState([]);
@@ -9,7 +10,7 @@ function App() {
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleSaveButtonClick = () => {
+  const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
     const newData = {
       position1: position1Value,
@@ -39,7 +40,65 @@ function App() {
     setPassword('');
   };
 
+<<<<<<< HEAD
   if (loggedIn) {}
+=======
+
+  if (loggedIn) {
+    return (
+      <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh', // Set minimum height to fill the viewport
+        flexDirection: 'column', // Align items in a column
+        gap: '16px', // Spacing between elements
+      }}
+    >
+      <Map
+        google={props.google}
+        style={{ width: '80%', height: '400px' }}
+        initialCenter={{
+          lat: 37.7749,
+          lng: -122.4194
+        }}
+        zoom={20}
+      />
+
+      <TextField
+        id="position1"
+        label="Position 1"
+        variant="filled"
+        value={position1Value}
+        onChange={(e) => setPosition1Value(e.target.value)}
+      />
+      <TextField
+        id="position2"
+        label="Position 2"
+        variant="filled"
+        value={position2Value}
+        onChange={(e) => setPosition2Value(e.target.value)}
+      />
+      <Button variant="contained" onClick={handleSaveButtonClick}>
+        Save Data
+      </Button>
+
+      {/* Display saved data */}
+      <Box mt={4}>
+        <Typography variant="h6">Saved Data:</Typography>
+        <ul>
+          {savedData.map((data, index) => (
+            <li key={index}>
+              Position 1: {data.position1}, Position 2: {data.position2}
+            </li>
+          ))}
+        </ul>
+      </Box>
+    </Box>
+  );
+}
+>>>>>>> 7a0425d4351537d72ad9b0c2f94c5fef11fe2b40
 
   return (
     <Box
@@ -140,5 +199,7 @@ function App() {
     </Box>
   );
 }
-
-export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto'
+})(App);
+//export default App;
