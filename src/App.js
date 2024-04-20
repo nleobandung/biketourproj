@@ -40,10 +40,6 @@ function App(props) {
     setPassword('');
   };
 
-<<<<<<< HEAD
-  if (loggedIn) {}
-=======
-
   if (loggedIn) {
     return (
       <Box
@@ -98,7 +94,6 @@ function App(props) {
     </Box>
   );
 }
->>>>>>> 7a0425d4351537d72ad9b0c2f94c5fef11fe2b40
 
   return (
     <Box
