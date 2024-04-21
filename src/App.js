@@ -117,29 +117,29 @@ function App(props) {
           <Typography component="h1" variant="h5" sx={{ marginTop:'25px',textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
             Length
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' , fontWeight: 'bold'}}>
             Distance:  {distance}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px', marginBottom:'25px' }}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px', marginBottom:'25px', fontWeight: 'bold' }}>
             Duration:  {duration}
           </Typography>
           <Typography component="h1" variant="h5" sx={{ marginTop:'20x', textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
             Temperature (F)
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px', fontWeight: 'bold' }}>
             Avg. temp at starting location:  {avgtempO} 
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px', fontWeight: 'bold' }}>
           Avg. temp. at destination:  {avgtempD} 
           </Typography>
           <Typography component="h1" variant="h5" sx={{ marginTop:'30px', textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Wind Speed
+            Wind speed (MPH)
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-          Max Wind Speed at Origin:  {maxwindo} 
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px', fontWeight: 'bold' }}>
+          Max wind speed at starting location:  {maxwindo} 
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-          Max Wind Speed at Destination:  {maxwindd} 
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px', fontWeight: 'bold' }}>
+          Max wind speed at destination:  {maxwindd} 
           </Typography>
         </Box>
         <Box
@@ -148,7 +148,7 @@ function App(props) {
               paddingX: '24px',
               paddingY: '20px',
               borderRadius: '8px',
-              height: '150px',
+              height: '200px',
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
               width: '80%',
@@ -158,8 +158,20 @@ function App(props) {
               marginBottom:'25px',
             }}
         >
-          <Typography variant="body1" sx={{ textAlign: 'center'}}>
-              Fun fact!
+          <Typography component="h1" variant="h5" sx={{ marginTop:'20x', textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Personal Stats
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '18px', fontWeight: 'bold',}}>
+            All-time distance: 1347.2 miles
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '18px', fontWeight: 'bold',}}>
+            Longest ride: 53 miles
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '18px',fontWeight: 'bold',}}>
+            All-time elevation gain: 21,021 ft
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '18px',fontWeight: 'bold',}}>
+            Rides completed: 42
           </Typography>
         </Box>
       </Box>
