@@ -28,12 +28,18 @@ def find_distance_matrix(origin, destination):
     directions_matrix_result = gmaps.distance_matrix(origin, destination, mode = "bicycling", departure_time = now)
     return directions_matrix_result
 
-# print(find_distance_matrix("Los Angeles", "San Diego"))
-
 steps = find_route("Los Angeles", "San Diego")
-print((steps[0]["polyline"]))
-print((steps[1]["polyline"]))
+#print(steps)
+origin_ele = gmaps.elevation(geocode("Los Angeles", "San Diego"))
+#destination_ele = gmaps.elevation("San Diego")
+print(origin_ele[0]["elevation"])
+#print(destination_ele)
+#print(geocode("Los Angeles", "San Diego"))
+#print((steps[0]["end_location"]))
+#print((steps[-1]["start_location"]))
 
-print(type((steps)[0]))
-
+'''elevation_data = (steps[0]["polyline"]).values()
+print(find_elevation(elevation_data))
+#print((steps[0]["polyline"]))
+#print((steps[1]["polyline"]))'''
 
