@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Link, Typography } from '@mui/material';
+import Logo from './bike_buddy_logo.png'
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 function App(props) {
@@ -45,42 +46,81 @@ function App(props) {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'left',
+        backgroundColor: 'white',
         minHeight: '100vh', // Set minimum height to fill the viewport
         flexDirection: 'column', // Align items in a column
-        gap: '16px', // Spacing between elements
       }}
-    >
-      <Map
-        google={props.google}
-        style={{ width: '80%', height: '400px' }}
-        initialCenter={{
-          lat: 37.7749,
-          lng: -122.4194
-        }}
-        zoom={20}
-      />
-
-      <TextField
+      >
+      <Box
+        sx={{display: 'flex',
+        backgroundColor: 'blue',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column', // Align items in a column
+        height: '15%',
+        padding: '24px',
+        zIndex: '1',
+      }}
+      >
+        <TextField
         id="position1"
         label="Position 1"
         variant="filled"
         value={position1Value}
         onChange={(e) => setPosition1Value(e.target.value)}
-      />
-      <TextField
+        sx={{width: '30%'}}
+        />
+        <TextField
         id="position2"
         label="Position 2"
         variant="filled"
         value={position2Value}
         onChange={(e) => setPosition2Value(e.target.value)}
-      />
-      <Button variant="contained" onClick={handleSaveButtonClick}>
-        Save Data
-      </Button>
+        sx={{width: '30%'}}
+        />
+        <Button variant="contained" onClick={handleSaveButtonClick}>
+          Save Data
+        </Button>
+      </Box>
 
-      {/* Display saved data */}
-      <Box mt={4}>
+      <Box
+        sx={{display: 'flex',
+        backgroundColor: 'darkgreen',
+        justifyContent: 'center',
+        alignItems: 'left',
+        flexDirection: 'row', // Align items in a column
+        height: '65%',
+        padding: '24px',
+        zIndex: '2',
+      }}
+      >
+        <Map
+          google={props.google}
+          style={{ width: '80%', height: '400px' }}
+          initialCenter={{
+            lat: 37.7749,
+            lng: -122.4194
+          }}
+          zoom={20}
+        >
+        </Map>
+      </Box>
+
+      <Box
+          sx={{
+          display: 'flex',
+          backgroundColor: 'black',
+          justifyContent: 'center',
+          alignItems: 'left',
+          minHeight: '100vh', // Set minimum height to fill the viewport
+          flexDirection: 'row', // Align items in a column
+          height: '20%',
+          padding: '24px',
+          zIndex: '3',
+        }}
+      >
+        <Box mt={4}>
         <Typography variant="h6">Saved Data:</Typography>
         <ul>
           {savedData.map((data, index) => (
@@ -89,8 +129,10 @@ function App(props) {
             </li>
           ))}
         </ul>
+        
+        </Box>
       </Box>
-    </Box>
+  </Box>
   );
 }
 
@@ -182,13 +224,14 @@ function App(props) {
         minHeight: '100vh',
         backgroundColor: 'white',
         padding: '24px',
-        flexDirection: 'row',
+        flexDirection: 'column',
         width: '50%'
       }}
       >
       <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
         Bike Buddy
       </Typography>
+      <img src={Logo} alt="bike_buddy_logo.png" style={{scale: '1',marginBottom: '15px', width: '100%', height: 'auto' }} />
       </Box>
     </Box>
   );
