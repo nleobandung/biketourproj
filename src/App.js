@@ -11,7 +11,6 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
-  const [chanceofrain, setCOR] = useState('');
 
   const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
@@ -31,7 +30,6 @@ function App(props) {
 
     setDistance(data["Distance"]);
     setDuration(data["Duration"]);
-    setCOR(data["Chance of rain"])
 
   }
 
@@ -50,20 +48,34 @@ function App(props) {
     setLoggedIn(false);
     setUsername('');
     setPassword('');
+    setPosition1Value('');
+    setPosition2Value('');
+    setDistance('');
+    setDuration('');
+    setSavedData([]);
   };
 
   if (loggedIn) {
     return (
       <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'start',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#6c957c',
-      }}
-    >
-    <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'start',
+          minHeight: '100vh',
+          backgroundColor: '#6c957c',
+        }}
+      >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'start',
+          minHeight: '100vh',
+          backgroundColor: '#6c957c',
+          width:'30%',
+          flexDirection:'column'
+        }}
+      >
+        <Box
             sx={{
               backgroundColor: 'white',
               paddingX: '24px',
@@ -72,14 +84,14 @@ function App(props) {
               height: 'fit-content', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
-              width: '50%',
+              width: '80%',
               zIndex: '1',
-              marginTop: '10px'
+              margin: '15px',
             }}
-      >
-      <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-        Plan your adventure!
-      </Typography>
+        >
+        <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+          Plan your adventure!
+        </Typography>
 
         <form onSubmit={handleSaveButtonClick}>
         <TextField
@@ -91,7 +103,7 @@ function App(props) {
             id="position1"
             value={position1Value}
             onChange={(e) => setPosition1Value(e.target.value)}
-            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
           />
           <TextField
             variant="outlined"
@@ -102,13 +114,13 @@ function App(props) {
             id="position2"
             value={position2Value}
             onChange={(e) => setPosition2Value(e.target.value)}
-            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
           />
           <Button
             fullWidth
             variant="contained"
             onClick={handleSaveButtonClick}
-            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '8px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '4px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           >
             Search ride
           </Button>
@@ -123,22 +135,95 @@ function App(props) {
               height: 'fit-content', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
-              width: '50%',
+              width: '80%',
               zIndex: '1',
-              marginTop: '10px'
+              margin:'15px'
             }}
         >
-          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '16px' }}>
+          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Route Statistics
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
             Total Distance: {distance}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '8px' }}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
             Total Duration: {duration}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '8px' }}>
-            Chance of Rain Origin: {chanceofrain}
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Elevation:
+          </Typography>
+          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Route Statistics
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
+            Total Distance: {distance}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Total Duration: {duration}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Elevation:
+          </Typography>
+          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Route Statistics
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
+            Total Distance: {distance}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Total Duration: {duration}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Elevation:
           </Typography>
         </Box>
       </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'start',
+          minHeight: '100vh',
+          backgroundColor: '#6c957c',
+          width:'70%',
+          flexDirection:'column'
+        }}
+      >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'start',
+          minHeight: '100vh',
+          backgroundColor: '#6c957c',
+          flexDirection:'column'
+        }}
+      >
+        <Box
+            sx={{
+              backgroundColor: 'white',
+              paddingX: '24px',
+              paddingY: '20px',
+              borderRadius: '8px',
+              height: 'fit-content', // Adjust height to fit content
+              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
+              position: 'relative', // Set position to relative
+              width: '20%',
+              zIndex: '1',
+              margin:'15px'
+            }}
+    >
+      <img src={Logo} alt="bike_buddy_logo.png" style={{scale: '1', width: '100%', height: 'auto' }} />
+      <Button
+            fullWidth
+            variant="contained"
+            onClick={handleLogout}
+            sx={{ marginTop:'10px','&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '4px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+          >
+            Logout
+          </Button>
+    </Box>
+  </Box>
+  </Box>  
+  </Box>
   );
 }
 
