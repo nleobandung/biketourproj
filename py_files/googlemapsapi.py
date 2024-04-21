@@ -34,4 +34,6 @@ steps = find_route("Los Angeles", "San Diego")
 print((steps[0]["polyline"]))
 print((steps[1]["polyline"]))
 
+print(type((steps)[0]))
+
 
