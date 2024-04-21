@@ -31,13 +31,16 @@ def find_distance_matrix(origin, destination):
 steps = find_route("Los Angeles", "San Diego")
 #print(steps)
 origin_ele = gmaps.elevation(geocode("Los Angeles", "San Diego"))
+origin_geo = (gmaps.geocode("Los Angeles"))[0]["geometry"]["location"]
 #destination_ele = gmaps.elevation("San Diego")
-print(origin_ele[0]["elevation"])
+#print(origin_ele[0]["elevation"])
 #print(destination_ele)
 #print(geocode("Los Angeles", "San Diego"))
 #print((steps[0]["end_location"]))
 #print((steps[-1]["start_location"]))
-
+#print((gmaps.geocode("Los Angeles"))[0]["geometry"]["location"]["lat"])
+print(gmaps.places_nearby(location = origin_geo))
+#lng = (gmaps.geocode(pos2))[0]["geometry"]["location"]
 '''elevation_data = (steps[0]["polyline"]).values()
 print(find_elevation(elevation_data))
 #print((steps[0]["polyline"]))
