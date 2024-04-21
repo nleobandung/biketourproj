@@ -83,12 +83,12 @@ function App(props) {
               paddingX: '24px',
               paddingY: '24px',
               borderRadius: '8px',
-              height: 'fit-content', // Adjust height to fit content
+              height: '500px', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
               width: '80%',
               zIndex: '1',
-              margin:'15px'
+              margin:'25px'
             }}
         >
           <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
@@ -134,12 +134,14 @@ function App(props) {
               paddingX: '24px',
               paddingY: '20px',
               borderRadius: '8px',
-              height: '250px',
+              height: '150px',
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
               width: '80%',
               zIndex: '1',
-              margin:'15px'
+              marginLeft:'25px',
+              marginRight:'25px',
+              marginBottom:'25px',
             }}
         >
           <Typography variant="body1" sx={{ textAlign: 'center'}}>
@@ -150,7 +152,6 @@ function App(props) {
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'start',
           minHeight: '100vh',
           backgroundColor: '#6c957c',
           width:'70%',
@@ -160,7 +161,6 @@ function App(props) {
       <Box
         sx={{
           display: 'flex',
-          alignItems: 'start',
           minHeight: '100vh',
           backgroundColor: '#6c957c',
           flexDirection:'row'
@@ -177,7 +177,9 @@ function App(props) {
               position: 'relative', // Set position to relative
               width: '60%',
               zIndex: '1',
-              margin: '15px',
+              marginTop: '25px',
+              marginLeft: '12px',
+              marginBottom: '25px',
             }}
         >
         <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
@@ -226,9 +228,9 @@ function App(props) {
               height: 'fit-content', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
-              width: '29.2%',
+              width: '29%',
               zIndex: '1',
-              margin:'15px'
+              margin:'25px',
             }}
     >
       <img src={Logo} alt="bike_buddy_logo.png" style={{scale: '1', width: '100%', height: 'auto' }} />
@@ -281,11 +283,11 @@ function App(props) {
           height: 'fit-content', // Adjust height to fit content
           boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
           position: 'relative', // Set position to relative
-          width: '50%',
+          width: '60%',
           zIndex: '1'
         }}
       >
-      <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+      <Typography component="h1" variant="h4" sx={{ margin:'28px',textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
         Sign in
       </Typography>
 
@@ -312,18 +314,29 @@ function App(props) {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '14px', marginBottom: '16px',position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '8px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '2px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           >
             Sign in
           </Button>
-          <Link href="#" variant="body2" sx={{ '&:hover': {scale: '1.02'}, color: 'darkgreen', position: 'relative', zIndex: '1' }}>Forgot password?</Link>
+          <Link href="#" variant="body2" sx={{ marginTop:'10px', '&:hover': {scale: '1.02'}, color: 'darkgreen', position: 'relative', zIndex: '1' }}>Forgot password?</Link>
         </form>
+        <Typography component="h1" variant="h6" sx={{ marginTop:'7px', marginBottom:'15px',textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+        -- or --
+      </Typography>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '2px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+          >
+            Sign up now
+          </Button>
         </Box>
       </Box>
 
@@ -336,10 +349,10 @@ function App(props) {
         backgroundColor: 'white',
         padding: '24px',
         flexDirection: 'column',
-        width: '50%'
+        width: '40%'
       }}
       >
-      <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+      <Typography component="h1" variant="h4" sx={{ marginBottom:'10px',textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
         Bike Buddy
       </Typography>
       <img src={Logo} alt="bike_buddy_logo.png" style={{scale: '1',marginBottom: '15px', width: '100%', height: 'auto' }} />
