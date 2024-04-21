@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Link, Typography } from '@mui/material';
 import Logo from './bike_buddy_logo.png'
-import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 function App(props) {
   const [position1Value, setPosition1Value] = useState('');
@@ -48,94 +47,64 @@ function App(props) {
       <Box
       sx={{
         display: 'flex',
+        alignItems: 'start',
         justifyContent: 'center',
-        alignItems: 'left',
-        backgroundColor: 'white',
-        minHeight: '100vh', // Set minimum height to fill the viewport
-        flexDirection: 'column', // Align items in a column
+        minHeight: '100vh',
+        backgroundColor: '#6c957c',
       }}
+    >
+    <Box
+            sx={{
+              backgroundColor: 'white',
+              paddingX: '24px',
+              paddingY: '24px',
+              borderRadius: '8px',
+              height: 'fit-content', // Adjust height to fit content
+              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
+              position: 'relative', // Set position to relative
+              width: '50%',
+              zIndex: '1',
+              marginTop: '10px'
+            }}
       >
-      <Box
-        sx={{display: 'flex',
-        backgroundColor: 'blue',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column', // Align items in a column
-        height: '15%',
-        padding: '24px',
-        zIndex: '1',
-      }}
-      >
-        <TextField
-        id="position1"
-        label="Position 1"
-        variant="filled"
-        value={position1Value}
-        onChange={(e) => setPosition1Value(e.target.value)}
-        sx={{width: '30%'}}
-        />
-        <TextField
-        id="position2"
-        label="Position 2"
-        variant="filled"
-        value={position2Value}
-        onChange={(e) => setPosition2Value(e.target.value)}
-        sx={{width: '30%'}}
-        />
-        <Button variant="contained" onClick={handleSaveButtonClick}>
-          Save Data
-        </Button>
-      </Box>
+      <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+        Plan your trip!
+      </Typography>
 
-      <Box
-        sx={{display: 'flex',
-        backgroundColor: 'darkgreen',
-        justifyContent: 'center',
-        alignItems: 'left',
-        flexDirection: 'row', // Align items in a column
-        height: '65%',
-        padding: '24px',
-        zIndex: '2',
-      }}
-      >
-        <Map
-          google={props.google}
-          style={{ width: '80%', height: '400px' }}
-          initialCenter={{
-            lat: 37.7749,
-            lng: -122.4194
-          }}
-          zoom={20}
-        >
-        </Map>
-      </Box>
-
-      <Box
-          sx={{
-          display: 'flex',
-          backgroundColor: 'black',
-          justifyContent: 'center',
-          alignItems: 'left',
-          minHeight: '100vh', // Set minimum height to fill the viewport
-          flexDirection: 'row', // Align items in a column
-          height: '20%',
-          padding: '24px',
-          zIndex: '3',
-        }}
-      >
-        <Box mt={4}>
-        <Typography variant="h6">Saved Data:</Typography>
-        <ul>
-          {savedData.map((data, index) => (
-            <li key={index}>
-              Position 1: {data.position1}, Position 2: {data.position2}
-            </li>
-          ))}
-        </ul>
-        
+        <form onSubmit={handleSaveButtonClick}>
+        <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name = "position1"
+            label="Starting Location"
+            id="position1"
+            value={position1Value}
+            onChange={(e) => setPosition1Value(e.target.value)}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }}
+          />
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name = "position2"
+            label="Destination"
+            id="position2"
+            value={position2Value}
+            onChange={(e) => setPosition2Value(e.target.value)}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '8px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+          >
+            Search trip
+          </Button>
+          </form>
         </Box>
       </Box>
-  </Box>
   );
 }
 
@@ -239,7 +208,5 @@ function App(props) {
     </Box>
   );
 }
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto'
-})(App);
-//export default App;
+
+export default App;
