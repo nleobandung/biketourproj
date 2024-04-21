@@ -22,10 +22,15 @@ function App(props) {
     setPosition1Value('');
     setPosition2Value('');
 
-    const response = await fetch(`http://localhost:3000/returnjson?pos1=${position1Value}&pos2=${position2Value}`);
+    const response = await fetch(`http://localhost:3000/returnjson?pos1=${newData.position1}&pos2=${newData.position2}`);
     const data = await response.json();
+
     setDistance(data.distance);
     setDuration(data.duration);
+
+    setDistance(data["Distance"]);
+    setDuration(data["Duration"]);
+
   }
 
   const handleLogin = (e) => {
@@ -98,9 +103,9 @@ function App(props) {
             sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '8px', position: 'relative', zIndex: '1' }}
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
+            onClick={handleSaveButtonClick}
             sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '8px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           >
             Search ride
