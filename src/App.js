@@ -17,8 +17,11 @@ function App(props) {
       position1: position1Value,
       position2: position2Value,
     };
+    setSavedData([...savedData, newData]);
+    setPosition1Value('');
+    setPosition2Value('');
 
-    const response = await fetch("http://localhost:3000/returnjson");
+    const response = await fetch(`http://localhost:3000/returnjson?pos1=${position1Value}&pos2=${position2Value}`);
     const data = await response.json();
     console.log(data);
   }

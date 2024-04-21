@@ -4,9 +4,11 @@ app = Flask(__name__)
 
 @app.route('/returnjson', methods=['GET']) 
 def ReturnJSON(): 
+    pos1 = request.args.get('pos1')
+    pos2 = request.args.get('pos2')
     data = { 
-        "Modules" : 15, 
-        "Subject" : "Data Structures and Algorithms", 
+        "Modules" : pos1, 
+        "Subject" : pos2, 
     } 
   
     return jsonify(data) 
