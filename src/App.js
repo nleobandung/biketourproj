@@ -11,7 +11,6 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
-  const [fun_fact,setFunFact] = useState('');
   const [generatedText,setGeneratedText] = useState('');
 
   const handleSaveButtonClick = async () => {
@@ -34,20 +33,19 @@ function App(props) {
     setDistance(data["Distance"]);
     setDuration(data["Duration"]);
     const prompt = `Generate instructions for traveling from ${newData.position1} to ${newData.position2}.`;
-    try {
-      const response = await fetch('https://api.gemini.ai/v1/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer AIzaSyAIVVv9KWaTAblphwT51knljh4ai-2K9tU` // Include API key in header
-        },
-        body: JSON.stringify({ prompt })
+    const gen_response = await fetch('https://api.gemini.ai/v1/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer AIzaSyAIVVv9KWaTAblphwT51knljh4ai-2K9tU` // Include API key in header
+      },
+      body: JSON.stringify({ prompt })
       });
-  
-      // ... Process response and update state
-    } catch (error) {
-        throw new Error('unhandled error thrown in app.js:49')
-    }
+      
+      const gen_data = await gen_response.json();
+      setGeneratedText(gen_data);
+
+
   };
 
   const handleLogin = (e) => {
@@ -159,7 +157,7 @@ function App(props) {
             }}
         >
           <Typography variant="body1" sx={{ textAlign: 'center'}}>
-              Fun fact!{fun_fact}
+              Fun fact! {generatedText}
           </Typography>
         </Box>
       </Box>
