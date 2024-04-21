@@ -11,6 +11,7 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
+  const [chanceofrain, setCOR] = useState('');
 
   const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
@@ -30,6 +31,7 @@ function App(props) {
 
     setDistance(data["Distance"]);
     setDuration(data["Duration"]);
+    setCOR(data["Chance of rain"])
 
   }
 
@@ -133,7 +135,7 @@ function App(props) {
             Total Duration: {duration}
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '8px' }}>
-            Elevation:
+            Chance of Rain Origin: {chanceofrain}
           </Typography>
         </Box>
       </Box>
