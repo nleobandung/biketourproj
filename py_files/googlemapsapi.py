@@ -1,5 +1,6 @@
 import googlemaps
 import json
+from datetime import datetime
 
 # documentation for googlemaps at https://github.com/googlemaps/google-maps-services-python
 
@@ -11,8 +12,10 @@ def geocode(origin, destination):
     geocode_dest = (gmaps.geocode(destination))[0]["geometry"]["location"]
     return geocode_origin["lat"], geocode_origin["lng"], geocode_dest["lat"], geocode_dest["lng"]
 
-def find_route(lat1, lon1, lat2, lon2):
-    return
+def find_route(origin, destination):
+    now = datetime.now()
+    directions_result = gmaps.directions(origin,destination,mode="bicycling",departure_time = now)
+    return directions_result
 
 def find_elevation():
     return
@@ -20,5 +23,5 @@ def find_elevation():
 def find_places():
     return
 
+print(find_route("Los Angeles", "San Diego"))
 
-print(geocode("3202 Route 52 Stormville NY 12582", "New York City"))
