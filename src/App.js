@@ -9,6 +9,8 @@ function App(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [distance, setDistance] = useState('');
+  const [duration, setDuration] = useState('');
 
   const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
@@ -22,7 +24,8 @@ function App(props) {
 
     const response = await fetch(`http://localhost:3000/returnjson?pos1=${position1Value}&pos2=${position2Value}`);
     const data = await response.json();
-    console.log(data);
+    setDistance(data.distance);
+    setDuration(data.duration);
   }
 
   const handleLogin = (e) => {
@@ -68,7 +71,7 @@ function App(props) {
             }}
       >
       <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-        Plan your trip!
+        Plan your adventure!
       </Typography>
 
         <form onSubmit={handleSaveButtonClick}>
@@ -100,9 +103,33 @@ function App(props) {
             variant="contained"
             sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '8px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           >
-            Search trip
+            Search ride
           </Button>
           </form>
+        </Box>
+        <Box
+            sx={{
+              backgroundColor: 'white',
+              paddingX: '24px',
+              paddingY: '24px',
+              borderRadius: '8px',
+              height: 'fit-content', // Adjust height to fit content
+              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
+              position: 'relative', // Set position to relative
+              width: '50%',
+              zIndex: '1',
+              marginTop: '10px'
+            }}
+        >
+          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '16px' }}>
+            Total Distance: {distance}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '8px' }}>
+            Total Duration: {duration}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'center', marginTop: '8px' }}>
+            Elevation:
+          </Typography>
         </Box>
       </Box>
   );
