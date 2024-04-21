@@ -41,7 +41,7 @@ function App(props) {
     setPassword('');
   };
 
-  if (true) {
+  if (loggedIn) {
     return (
       <Box
       sx={{
