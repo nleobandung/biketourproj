@@ -12,8 +12,15 @@ def ReturnJSON():
     pos2 = request.args.get('pos2')
     now = datetime.now()
     directions_result = gmaps.directions(pos1,pos2,mode="bicycling",departure_time = now)
-    directions_result = directions_result[0]["legs"][0]["steps"][0]
-    return jsonify(directions_result) 
+    #directions_result1 = directions_result[0]["legs"][0]["steps"][0]
+    distance = str(directions_result[0]['legs'][0]['distance']['text'])
+    duration = str(directions_result[0]['legs'][0]['duration']['text'])
+    data = {
+        "Distance" : distance,
+        "Duration" : duration
+
+    }
+    return jsonify(data)
     
 if __name__ == "__main__":
     app.run(port=3000)
