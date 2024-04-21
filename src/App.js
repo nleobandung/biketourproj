@@ -11,6 +11,13 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
+  const [avgtempO, setAvgTempo] = useState('');
+  const [avgtempD, setAvgTempd] = useState('');
+  const [maxwindo, setMaxWindO] = useState('');
+  const [maxwindd, setMaxWindd] = useState('');
+  // const [airqo, setAirQO] = useState('');
+  // const [airqd, setAirQD] = useState('');
+  
   const [fun_fact,setFunFact] = useState('');
 
   const handleSaveButtonClick = async () => {
@@ -26,11 +33,23 @@ function App(props) {
     const response = await fetch(`http://localhost:3000/returnjson?pos1=${newData.position1}&pos2=${newData.position2}`);
     const data = await response.json();
 
-    setDistance(data.distance);
-    setDuration(data.duration);
+    // setDistance(data.distance);
+    // setDuration(data.duration);
+    // setAvgTempo(data.avgtempO);
+    // setAvgTempd(data.avgtempD);
+    // setMaxWindO(data.maxwindo);
+    // setMaxWindd(data.maxwindd);
+    // setAirQO(data.airqo);
+    // setAirQD(data.airqd);
 
     setDistance(data["Distance"]);
     setDuration(data["Duration"]);
+    setAvgTempo(data["AverageTempO"]);
+    setAvgTempd(data["AverageTempd"]);
+    setMaxWindO(data["MaxWindSpeedO"]);
+    setMaxWindd(data["MaxWindSpeedd"]);
+    // setAirQO(data["AirQo"]);
+    // setAirQD(data["AirQd"])
 
   }
 
@@ -95,38 +114,38 @@ function App(props) {
             Route Statistics
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-            Total Distance: {distance}
+            Total Distance:  {distance}
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Total Duration: {duration}
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Elevation:
+            Total Duration:  {duration}
           </Typography>
           <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Statistics
+            Route Temperature
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-            Total Distance: {distance}
+            Average Temperature at Origin:  {avgtempO} 
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Total Duration: {duration}
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Elevation:
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
+          Average Temperature at Destination:  {avgtempD} 
           </Typography>
           <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Statistics
+            Route Wind Speed
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-            Total Distance: {distance}
+          Max Wind Speed at Origin:  {maxwindo} 
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
+          Max Wind Speed at Destination:  {maxwindd} 
+          </Typography>
+          {/*<Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Route Air Quality
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
+          Air Quality at {position1Value}: {airqo}
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Total Duration: {duration}
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Elevation:
-          </Typography>
+          Air Quality at {position2Value}: {airqd}
+          </Typography> */}
         </Box>
         <Box
             sx={{
