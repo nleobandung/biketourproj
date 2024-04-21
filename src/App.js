@@ -11,6 +11,7 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
+  const [fun_fact,setFunFact] = useState('');
 
   const handleSaveButtonClick = async () => {
     // Save the data from text fields to the state
@@ -53,6 +54,7 @@ function App(props) {
     setDistance('');
     setDuration('');
     setSavedData([]);
+    setFunFact('');
   };
 
   if (loggedIn) {
@@ -75,57 +77,6 @@ function App(props) {
           flexDirection:'column'
         }}
       >
-        <Box
-            sx={{
-              backgroundColor: 'white',
-              paddingX: '24px',
-              paddingY: '24px',
-              borderRadius: '8px',
-              height: 'fit-content', // Adjust height to fit content
-              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
-              position: 'relative', // Set position to relative
-              width: '80%',
-              zIndex: '1',
-              margin: '15px',
-            }}
-        >
-        <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-          Plan your adventure!
-        </Typography>
-
-        <form onSubmit={handleSaveButtonClick}>
-        <TextField
-            variant="outlined"
-            required
-            fullWidth
-            name = "position1"
-            label="Starting Location"
-            id="position1"
-            value={position1Value}
-            onChange={(e) => setPosition1Value(e.target.value)}
-            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
-          />
-          <TextField
-            variant="outlined"
-            required
-            fullWidth
-            name = "position2"
-            label="Destination"
-            id="position2"
-            value={position2Value}
-            onChange={(e) => setPosition2Value(e.target.value)}
-            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            onClick={handleSaveButtonClick}
-            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '4px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
-          >
-            Search ride
-          </Button>
-          </form>
-        </Box>
         <Box
             sx={{
               backgroundColor: 'white',
@@ -177,6 +128,24 @@ function App(props) {
             Elevation:
           </Typography>
         </Box>
+        <Box
+            sx={{
+              backgroundColor: 'white',
+              paddingX: '24px',
+              paddingY: '20px',
+              borderRadius: '8px',
+              height: '250px',
+              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
+              position: 'relative', // Set position to relative
+              width: '80%',
+              zIndex: '1',
+              margin:'15px'
+            }}
+        >
+          <Typography variant="body1" sx={{ textAlign: 'center'}}>
+              Fun fact!{fun_fact}
+          </Typography>
+        </Box>
       </Box>
       <Box
         sx={{
@@ -194,9 +163,60 @@ function App(props) {
           alignItems: 'start',
           minHeight: '100vh',
           backgroundColor: '#6c957c',
-          flexDirection:'column'
+          flexDirection:'row'
         }}
       >
+        <Box
+            sx={{
+              backgroundColor: 'white',
+              paddingX: '24px',
+              paddingY: '24px',
+              borderRadius: '8px',
+              height: 'fit-content', // Adjust height to fit content
+              boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
+              position: 'relative', // Set position to relative
+              width: '60%',
+              zIndex: '1',
+              margin: '15px',
+            }}
+        >
+        <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+          Plan your adventure!
+        </Typography>
+
+        <form onSubmit={handleSaveButtonClick}>
+        <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name = "position1"
+            label="Starting Location"
+            id="position1"
+            value={position1Value}
+            onChange={(e) => setPosition1Value(e.target.value)}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
+          />
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            name = "position2"
+            label="Destination"
+            id="position2"
+            value={position2Value}
+            onChange={(e) => setPosition2Value(e.target.value)}
+            sx={{ '&:hover': {scale: '1.02'}, marginRight: '100%', marginTop: '4px', position: 'relative', zIndex: '1' }}
+          />
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={handleSaveButtonClick}
+            sx={{ '&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '4px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+          >
+            Search ride
+          </Button>
+          </form>
+        </Box>
         <Box
             sx={{
               backgroundColor: 'white',
@@ -206,7 +226,7 @@ function App(props) {
               height: 'fit-content', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
-              width: '20%',
+              width: '29.2%',
               zIndex: '1',
               margin:'15px'
             }}
