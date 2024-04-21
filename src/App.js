@@ -103,7 +103,7 @@ function App(props) {
               paddingX: '24px',
               paddingY: '24px',
               borderRadius: '8px',
-              height: '500px', // Adjust height to fit content
+              height: '450px', // Adjust height to fit content
               boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)', // Add shadow for depth effect
               position: 'relative', // Set position to relative
               width: '80%',
@@ -111,25 +111,28 @@ function App(props) {
               margin:'25px'
             }}
         >
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Statistics
+          <Typography component="h1" variant="h4" sx={{ marginTop:'5px', marginBottom: '10px', textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+            Route Information
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-            Total Distance:  {distance}
+          <Typography component="h1" variant="h5" sx={{ marginTop:'25px',textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
+            Length
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-            Total Duration:  {duration}
+            Distance:  {distance}
           </Typography>
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Temperature
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px', marginBottom:'25px' }}>
+            Duration:  {duration}
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-            Average Temperature at Origin:  {avgtempO} 
+          <Typography component="h1" variant="h5" sx={{ marginTop:'20x', textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
+            Temperature (F)
           </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-          Average Temperature at Destination:  {avgtempD} 
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+            Avg. temp at starting location:  {avgtempO} 
           </Typography>
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
+          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
+          Avg. temp. at destination:  {avgtempD} 
+          </Typography>
+          <Typography component="h1" variant="h5" sx={{ marginTop:'30px', textAlign: 'left', fontWeight: 'bold', color: 'darkgreen'}}>
             Route Wind Speed
           </Typography>
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
@@ -138,15 +141,6 @@ function App(props) {
           <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
           Max Wind Speed at Destination:  {maxwindd} 
           </Typography>
-          {/*<Typography component="h1" variant="h5" sx={{ textAlign: 'center', fontWeight: 'bold', color: 'darkgreen'}}>
-            Route Air Quality
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '16px' }}>
-          Air Quality at {position1Value}: {airqo}
-          </Typography>
-          <Typography variant="body1" sx={{ textAlign: 'left', marginTop: '8px' }}>
-          Air Quality at {position2Value}: {airqd}
-          </Typography> */}
         </Box>
         <Box
             sx={{
