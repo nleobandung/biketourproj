@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Link, Typography } from '@mui/material';
 import Logo from './bike_buddy_logo.png'
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 function App(props) {
   const [position1Value, setPosition1Value] = useState('');
@@ -17,8 +18,6 @@ function App(props) {
   const [maxwindd, setMaxWindd] = useState('');
   // const [airqo, setAirQO] = useState('');
   // const [airqd, setAirQD] = useState('');
-  
-  const [fun_fact,setFunFact] = useState('');
 
   const handleSaveButtonClick = async () => {
     
@@ -74,7 +73,6 @@ function App(props) {
     setDistance('');
     setDuration('');
     setSavedData([]);
-    setFunFact('');
   };
 
   if (loggedIn) {
@@ -189,7 +187,8 @@ function App(props) {
           display: 'flex',
           minHeight: '100vh',
           backgroundColor: '#6c957c',
-          flexDirection:'row'
+          flexDirection:'row',
+          height:"30%"
         }}
       >
         <Box
@@ -218,7 +217,7 @@ function App(props) {
             required
             fullWidth
             name = "position1"
-            label="Starting Location"
+            label="Starting location"
             id="position1"
             value={position1Value}
             onChange={(e) => setPosition1Value(e.target.value)}
@@ -264,12 +263,23 @@ function App(props) {
             fullWidth
             variant="contained"
             onClick={handleLogout}
-            sx={{ marginTop:'10px','&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginTop: '4px', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
+            sx={{ marginTop:'10px','&:hover': {scale: '1.02',backgroundColor: 'darkgreen',}, fontWeight: 'bold', backgroundColor: 'darkgreen', color: '#8bc34a', marginRight: '100%', marginBottom: '6px', position: 'relative', zIndex: '1' }} // Set position to relative and zIndex to render above
           >
             Logout
           </Button>
     </Box>
   </Box>
+  <div style={{ position: 'fixed', bottom: '10px', width: '65%', height: '60vh' }}>
+    <Map
+        google={props.google}
+        style={{ width: '100%', height: '400px', }}
+        initialCenter={{
+          lat: 37.7749,
+          lng: -122.4194
+        }}
+        zoom={20}
+      />
+    </div>
   </Box>  
   </Box>
   );
@@ -387,4 +397,6 @@ function App(props) {
   );
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBF8q9l9Zv1wqZVUFmXmsV5Ohs0NmfSzto'
+})(App);
