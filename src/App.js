@@ -12,8 +12,10 @@ function App(props) {
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
   const [fun_fact,setFunFact] = useState('');
+  const [generatedText,setGeneratedText] = useState('');
 
   const handleSaveButtonClick = async () => {
+    
     // Save the data from text fields to the state
     const newData = {
       position1: position1Value,
@@ -31,8 +33,22 @@ function App(props) {
 
     setDistance(data["Distance"]);
     setDuration(data["Duration"]);
-
-  }
+    const prompt = `Generate instructions for traveling from ${newData.position1} to ${newData.position2}.`;
+    try {
+      const response = await fetch('https://api.gemini.ai/v1/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer AIzaSyAIVVv9KWaTAblphwT51knljh4ai-2K9tU` // Include API key in header
+        },
+        body: JSON.stringify({ prompt })
+      });
+  
+      // ... Process response and update state
+    } catch (error) {
+        throw new Error('unhandled error thrown in app.js:49')
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
