@@ -21,6 +21,7 @@ function App(props) {
   const [fun_fact,setFunFact] = useState('');
 
   const handleSaveButtonClick = async () => {
+    
     // Save the data from text fields to the state
     const newData = {
       position1: position1Value,
@@ -162,7 +163,7 @@ function App(props) {
             }}
         >
           <Typography variant="body1" sx={{ textAlign: 'center'}}>
-              Fun fact!{fun_fact}
+              Fun fact! {generatedText}
           </Typography>
         </Box>
       </Box>
