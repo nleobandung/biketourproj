@@ -165,7 +165,7 @@ function App(props) {
             }}
         >
           <Typography variant="body1" sx={{ textAlign: 'center'}}>
-              Fun fact! {generatedText}
+              Fun fact!
           </Typography>
         </Box>
       </Box>
