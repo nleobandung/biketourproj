@@ -16,11 +16,10 @@ function App(props) {
       position1: position1Value,
       position2: position2Value,
     };
-    setSavedData([...savedData, newData]);
 
-    // Clear text fields after saving data
-    setPosition1Value('');
-    setPosition2Value('');
+    const response = await fetch("http://localhost:3000/returnjson");
+    const data = await response.json();
+    console.log(data);
   }
 
   const handleLogin = (e) => {

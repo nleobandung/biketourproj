@@ -15,13 +15,23 @@ def geocode(origin, destination):
 def find_route(origin, destination):
     now = datetime.now()
     directions_result = gmaps.directions(origin,destination,mode="bicycling",departure_time = now)
-    return directions_result
+    return directions_result[0]["legs"][0]["steps"]
 
-def find_elevation():
-    return
+def find_elevation(path):
+    return gmaps.elevation_along_path(path, 10)
 
 def find_places():
     return
 
-print(find_route("Los Angeles", "San Diego"))
+def find_distance_matrix(origin, destination):
+    now = datetime.now()
+    directions_matrix_result = gmaps.distance_matrix(origin, destination, mode = "bicycling", departure_time = now)
+    return directions_matrix_result
+
+# print(find_distance_matrix("Los Angeles", "San Diego"))
+
+steps = find_route("Los Angeles", "San Diego")
+print((steps[0]["polyline"]))
+print((steps[1]["polyline"]))
+
 
