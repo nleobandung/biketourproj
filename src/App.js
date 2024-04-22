@@ -19,6 +19,8 @@ function App(props) {
   // const [airqo, setAirQO] = useState('');
   // const [airqd, setAirQD] = useState('');
 
+
+
   const handleSaveButtonClick = async () => {
     
     // Save the data from text fields to the state
@@ -30,7 +32,7 @@ function App(props) {
     setPosition1Value('');
     setPosition2Value('');
 
-    const response = await fetch(`http://localhost:3000/returnjson?pos1=${newData.position1}&pos2=${newData.position2}`);
+    const response = await fetch(`http://localhost:3001/returnjson?pos1=${newData.position1}&pos2=${newData.position2}`);
     const data = await response.json();
 
     // setDistance(data.distance);
